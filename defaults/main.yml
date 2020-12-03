@@ -1,0 +1,7 @@
+---
+bitwarden_version: 1.13.3
+bitwarden_staging_dir: /tmp/ansible-role-bitwarden_cli
+bitwarden_dest_dir: /usr/local/bin
+bitwarden_binary_owner: root
+bitwarden_binary_group: root
+bitwarden_binary_mode: 0755

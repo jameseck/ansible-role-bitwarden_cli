@@ -1,0 +1,19 @@
+---
+- name: Converge
+  hosts: all
+  pre_tasks:
+    - name: Wait for systemd to complete initialization.  # noqa 303
+      command: systemctl is-system-running
+      register: systemctl_status
+      failed_when: systemctl_status.rc not in [0,1]
+      until: >
+        'running' in systemctl_status.stdout or
+        'degraded' in systemctl_status.stdout
+      retries: 30
+      delay: 5
+      when: ansible_service_mgr == 'systemd'
+      changed_when: false
+  tasks:
+    - name: "Include bitwarden_cli"
+      include_role:
+        name: "jameseck.bitwarden_cli"

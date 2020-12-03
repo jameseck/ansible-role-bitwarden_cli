@@ -1,0 +1,14 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: bitwarden_cli
+  author: jameseck
+  description: Install Bitwarden cli
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.8
+  platforms:
+    - name: Fedora
+      versions:
+        - 32
+        - 33

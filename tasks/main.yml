@@ -1,0 +1,24 @@
+---
+- name: Ensure unzip package is installed
+  package:
+    name: unzip
+    state: present
+
+- name: Ensure staging directory exists
+  file:
+    path: "{{ bitwarden_staging_dir }}"
+    state: directory
+
+- name: Download Bitwarden cli
+  get_url:
+    url: "https://github.com/bitwarden/cli/releases/download/v{{ bitwarden_version }}/bw-linux-{{ bitwarden_version }}.zip"
+    dest: "{{ bitwarden_staging_dir }}/bw-linux-{{ bitwarden_version }}.zip"
+
+- name: Unpack Bitwarden CLI
+  unarchive:
+    src: "{{ bitwarden_staging_dir }}/bw-linux-{{ bitwarden_version }}.zip"
+    dest: "{{ bitwarden_dest_dir }}"
+    owner: "{{ bitwarden_binary_owner }}"
+    group: "{{ bitwarden_binary_group }}"
+    mode: "{{ bitwarden_binary_mode }}"
+    remote_src: yes

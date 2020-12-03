@@ -1,0 +1,17 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Stat the Bitwarden binary
+    stat:
+      path: /usr/local/bin/bw
+    register: __bw_stat
+  - name: Check the Bitwarden binary exists
+    assert:
+      that: __bw_stat.stat.exists
+  - name: Check the Bitwarden binary is executable
+    assert:
+      that: __bw_stat.stat.executable
