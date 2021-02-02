@@ -8,6 +8,9 @@
   file:
     path: "{{ bitwarden_staging_dir }}"
     state: directory
+    owner: "{{ bitwarden_staging_dir_owner }}"
+    group: "{{ bitwarden_staging_dir_group }}"
+    mode: "{{ bitwarden_staging_dir_mode }}"
 
 - name: Download Bitwarden cli
   get_url:

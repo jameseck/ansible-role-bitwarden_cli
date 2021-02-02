@@ -15,6 +15,15 @@ Available variables are listed below along with default values (`defaults/main.y
     bitwarden_staging_dir: /tmp/ansible-role-bitwarden_cli
   A staging directory to download the Bitwarden cli zip to
 
+    bitwarden_staging_dir_owner: root
+  The owner for the staging directory
+
+    bitwarden_staging_dir_group: root
+  The group for the staging directory
+
+    bitwarden_staging_dir_mode: 0755
+  The mode for the staging directory
+
     bitwarden_binary_owner: root
   The owner for the Bitwarden binary
 
